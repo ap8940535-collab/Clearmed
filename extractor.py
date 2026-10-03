@@ -1,5 +1,6 @@
 import os
 import time
+import streamlit as st
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -8,7 +9,10 @@ from schemas import PrescriptionAnalysis
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+# Read from Streamlit Cloud Secrets first; fallback to environment variables
+api_key = st.secrets.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
+
+client = genai.Client(api_key=api_key)
 
 def get_system_prompt(target_language: str = "English") -> str:
     return f"""
