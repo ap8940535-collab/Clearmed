@@ -32,7 +32,7 @@ def analyze_prescription(image_path: str, target_language: str = "English") -> P
     for attempt in range(max_retries):
         try:
             response = client.models.generate_content(
-                model="gemini-3.8-flash",
+                model="gemini-2.5-flash",
                 contents=[
                     image, 
                     f"Extract prescription details, cross-check interactions, and explain everything in {target_language}."
