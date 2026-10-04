@@ -29,7 +29,7 @@ def analyze_prescription(image_path: str, target_language: str = "English") -> P
     image = Image.open(image_path)
     
     # Models to try in order
-    candidate_models = ["gemini-2.5-flash", "gemini-1.5-flash"]
+    candidate_models = ["gemini-3.8-flash", "gemini-1.5-flash"]
     last_error = None
 
     for model_name in candidate_models:
